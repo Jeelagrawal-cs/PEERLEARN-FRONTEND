@@ -1,0 +1,616 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #0f172a;
+  background-color: #f8fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to bottom right, #f8fafc, #eef2ff);
+  color: #0f172a;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ============================================================
+   Upload Page
+   ============================================================ */
+
+.upload-page {
+  display: flex;
+  gap: 28px;
+  min-height: 100vh;
+  padding: 24px 24px 40px;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.upload-page__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.upload-page__sidebar {
+  width: 340px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .upload-page {
+    flex-direction: column;
+  }
+  .upload-page__sidebar {
+    width: 100%;
+    position: static;
+  }
+}
+
+/* hero */
+.upload-page__hero {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: #fff;
+  padding: 28px 32px;
+  box-shadow: 0 12px 40px rgba(74, 104, 179, 0.1);
+}
+
+.upload-page__hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.upload-page__back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  transition: background 0.2s;
+}
+.upload-page__back-btn:hover {
+  background: #f1f5f9;
+}
+
+.upload-page__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.upload-page__badge {
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.upload-page__badge--violet {
+  background: #f5f3ff;
+  color: #6d28d9;
+}
+.upload-page__badge--sky {
+  background: #f0f9ff;
+  color: #0369a1;
+}
+
+.upload-page__heading {
+  margin-top: 16px;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.upload-page__subtitle {
+  margin-top: 12px;
+  max-width: 640px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #475569;
+}
+
+/* error */
+.upload-page__error {
+  margin-top: 24px;
+  border-radius: 20px;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  padding: 20px;
+}
+.upload-page__error p {
+  font-size: 14px;
+  color: #b91c1c;
+  margin: 0;
+}
+
+/* form */
+.upload-page__form {
+  margin-top: 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: #fff;
+  padding: 28px 32px;
+  box-shadow: 0 12px 40px rgba(74, 104, 179, 0.08);
+}
+
+.upload-page__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 640px) {
+  .upload-page__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.upload-page__field--full {
+  grid-column: 1 / -1;
+}
+
+.upload-page__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.upload-page__input {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #334155;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.upload-page__input:focus {
+  border-color: #38bdf8;
+  background: #fff;
+}
+.upload-page__textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.upload-page__input--placeholder {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  color: #94a3b8;
+}
+.upload-page__select-wrap {
+  position: relative;
+}
+.upload-page__select {
+  appearance: none;
+}
+.upload-page__select--locked {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+.upload-page__select-lock-icon {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.upload-page__link-input-wrap {
+  position: relative;
+}
+.upload-page__link-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+.upload-page__input--link {
+  padding-left: 44px;
+}
+
+.upload-page__file-drop {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  border-radius: 16px;
+  border: 1.5px dashed #cbd5e1;
+  background: #f8fafc;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #475569;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.upload-page__file-drop:hover {
+  border-color: #7dd3fc;
+  background: #f0f9ff;
+}
+.upload-page__file-drop-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.upload-page__file-input {
+  display: none;
+}
+
+/* blocked banner */
+.upload-page__blocked-banner {
+  margin-top: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border-radius: 16px;
+  border: 1px solid #fca5a5;
+  background: linear-gradient(135deg, #fef2f2, #fff1f2);
+  padding: 18px 20px;
+  color: #b91c1c;
+  font-size: 14px;
+  animation: uploadBlockedPulse 2s ease-in-out infinite;
+}
+.upload-page__blocked-banner strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.upload-page__blocked-banner p {
+  margin: 0;
+}
+
+@keyframes uploadBlockedPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+  50% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.08); }
+}
+
+/* actions */
+.upload-page__actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.upload-page__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 16px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+  border: none;
+}
+.upload-page__btn:active {
+  transform: scale(0.97);
+}
+.upload-page__btn--secondary {
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #334155;
+}
+.upload-page__btn--secondary:hover {
+  background: #f8fafc;
+}
+.upload-page__btn--primary {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(109, 40, 217, 0.25);
+}
+.upload-page__btn--primary:hover {
+  background: linear-gradient(135deg, #6d28d9, #5b21b6);
+}
+.upload-page__btn--primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.upload-page__btn-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Malware Sidebar
+   ============================================================ */
+
+.malware-sidebar {
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: #fff;
+  padding: 28px 24px;
+  box-shadow: 0 12px 40px rgba(74, 104, 179, 0.08);
+  text-align: center;
+  animation: sidebarFadeIn 0.4s ease;
+}
+
+@keyframes sidebarFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* empty / no file */
+.malware-sidebar--empty .malware-sidebar__icon-wrap,
+.malware-sidebar--error .malware-sidebar__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  color: #94a3b8;
+}
+.malware-sidebar--error .malware-sidebar__icon-wrap--error {
+  background: linear-gradient(135deg, #fef2f2, #fecaca);
+  color: #ef4444;
+}
+
+.malware-sidebar__title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+
+.malware-sidebar__subtitle {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* scanning state */
+.malware-sidebar--scanning {
+  background: linear-gradient(135deg, #f8fafc, #eff6ff);
+}
+
+.malware-sidebar__spinner-wrap {
+  margin: 0 auto 20px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.malware-sidebar__spinner {
+  color: #6366f1;
+  animation: spin 1.2s linear infinite;
+}
+
+.malware-sidebar__progress-bar {
+  margin-top: 20px;
+  height: 4px;
+  border-radius: 99px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+.malware-sidebar__progress-bar-inner {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #6366f1, #a78bfa);
+  animation: scanProgress 2.5s ease-in-out infinite;
+}
+
+@keyframes scanProgress {
+  0%   { width: 0; }
+  50%  { width: 85%; }
+  100% { width: 100%; }
+}
+
+/* result state */
+.malware-sidebar--result {
+  text-align: left;
+}
+
+.malware-sidebar__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.malware-sidebar__ring-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+.malware-sidebar__ring-wrap--safe {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+.malware-sidebar__ring-wrap--warning {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+}
+.malware-sidebar__ring-wrap--danger {
+  background: linear-gradient(135deg, #fef2f2, #fecaca);
+}
+
+.malware-sidebar__risk-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #334155;
+  margin: 0;
+}
+
+/* badges */
+.malware-sidebar__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.malware-sidebar__badge--safe {
+  background: #dcfce7;
+  color: #166534;
+}
+.malware-sidebar__badge--warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+.malware-sidebar__badge--danger {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+/* meta rows */
+.malware-sidebar__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+}
+.malware-sidebar__meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.malware-sidebar__meta-row span:first-child {
+  color: #94a3b8;
+  font-weight: 600;
+}
+.malware-sidebar__meta-row span:last-child {
+  color: #334155;
+  font-weight: 500;
+  text-align: right;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* summary */
+.malware-sidebar__summary {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  font-size: 12px;
+  color: #1e40af;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* indicators */
+.malware-sidebar__indicators {
+  border-radius: 14px;
+  border: 1px solid #f1f5f9;
+  background: #fafbfd;
+  padding: 14px;
+}
+.malware-sidebar__indicators-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #475569;
+  margin: 0 0 10px;
+}
+
+.malware-sidebar__indicator-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.malware-sidebar__indicator {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #475569;
+}
+
+.malware-sidebar__indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.malware-sidebar__indicator--high .malware-sidebar__indicator-dot {
+  background: #ef4444;
+}
+.malware-sidebar__indicator--medium .malware-sidebar__indicator-dot {
+  background: #f59e0b;
+}
+.malware-sidebar__indicator--low .malware-sidebar__indicator-dot {
+  background: #22c55e;
+}

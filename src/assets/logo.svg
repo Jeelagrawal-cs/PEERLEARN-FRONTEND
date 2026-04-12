@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="plGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="plGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0284c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2dd4bf;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- P letter - stylized -->
+  <path d="M40 160 L40 55 Q40 40 55 35 L90 28 Q130 22 135 55 Q140 85 105 92 L70 98 L70 160 Z" fill="url(#plGrad)" opacity="0.95"/>
+  <!-- P inner cutout -->
+  <path d="M70 58 L95 52 Q115 48 116 65 Q117 80 95 83 L70 87 Z" fill="white"/>
+  <!-- L letter - stylized, swept -->
+  <path d="M75 95 L85 95 Q90 95 92 100 L125 160 Q128 166 135 166 L168 166 Q178 166 172 155 L120 60 Q115 50 105 52" fill="url(#plGrad2)" opacity="0.9"/>
+  <!-- Swoosh accent -->
+  <path d="M30 165 Q28 172 35 175 L170 175 Q180 175 178 166 L168 166 L35 166 Z" fill="url(#plGrad)" opacity="0.7"/>
+</svg>
