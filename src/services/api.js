@@ -4,7 +4,7 @@ const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL?.trim();
 
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: "https://peerlearn-backend-production.up.railway.app",
   withCredentials: false,
 });
 
